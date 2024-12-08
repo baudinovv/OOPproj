@@ -10,17 +10,14 @@ public class StudentComporator
 	}
 	
 	public int compareByGPA(Student s1, Student s2) {
-		// TODO implement me
-		return 0;	
-	}
-	
+    		return Double.compare(s1.getGPA(), s2.getGPA());
+}
+
 	public int compareByCredits(Student s1, Student s2) {
-		// TODO implement me
-		return 0;	
-	}
-	
+    		return Integer.compare(s1.getCredits(), s2.getCredits());
+}
+
 	public int compareByName(Student s1, Student s2) {
-		// TODO implement me
-		return 0;	
-	}
+    		return s1.getName().compareTo(s2.getName());
+}
 }
