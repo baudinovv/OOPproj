@@ -9,18 +9,15 @@ public class ResearchPaperComporator
 		super();
 	}
 	
-	public int compareByCitations(Research Papers p1, Research Papers p2) {
-		// TODO implement me
-		return 0;	
-	}
-	
-	public int compareByPublicationDate(Research Papers p1, Research Papers p2) {
-		// TODO implement me
-		return 0;	
-	}
-	
-	public int compareByImpactFactor(Research Papers p1, Research Papers p2) {
-		// TODO implement me
-		return 0;	
-	}
+	public int compareByCitations(ResearchPapers p1, ResearchPapers p2) {
+    	return Integer.compare(p1.getCitations(), p2.getCitations());
+}
+
+	public int compareByPublicationDate(ResearchPapers p1, ResearchPapers p2) {
+    	return p1.getPublicationDate().compareTo(p2.getPublicationDate());
+}
+
+	public int compareByImpactFactor(ResearchPapers p1, ResearchPapers p2) {
+	    return Double.compare(p1.getImpactFactor(), p2.getImpactFactor());
+}
 }
