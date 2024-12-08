@@ -1,6 +1,4 @@
-package Enums and Comparators ;
-
-
+package EnumsAndComparators ;
 
 
 public class CourseComporator

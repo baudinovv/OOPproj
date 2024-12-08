@@ -1,7 +1,7 @@
 package Users ;
 
-
-
+import java.util.*;
+import EnumsAndComparators.Gender;
 
 public abstract class User
 {
@@ -13,6 +13,7 @@ public abstract class User
 	private int id;
 	
 	private String username;
+
 	
 	private Date registrationDate;
 	
@@ -23,64 +24,64 @@ public abstract class User
 	private String email;
 	
 	private int passportNumber;
-	
-	public String getFirstName() {
-		// TODO implement me
-		return "";	
+
+  public User(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.id = id;
+    this.username = username;
+    this.registrationDate =  registrationDate;
+    this.phoneNumber = phoneNumber;
+    this.gender = gender;
+    this.email = email;
+    this.passportNumber = passportNumber;
+  }
+  
+  public void showMenu() {
 	}
-	
-	public String getLastName() {
-		// TODO implement me
-		return "";	
-	}
-	
-	public int getUserId() {
-		// TODO implement me
-		return 0;	
-	}
-	
-	public String getEmail() {
-		// TODO implement me
-		return "";	
-	}
-	
-	public User(String Name, int User_id) {
-		super();
-		// TODO construct me	
-	}
-	
-	public void showMenu() {
-		// TODO implement me	
-	}
-	
-	public void editPassword() {
-		// TODO implement me	
-	}
-	
-	public int getPhoneNumber() {
-		// TODO implement me
-		return 0;	
-	}
-	
-	public Gender getGender() {
-		// TODO implement me
-		return null;	
-	}
-	
-	public String getUsername() {
-		// TODO implement me
-		return "";	
-	}
-	
-	public void getRegistrationDate() {
-		// TODO implement me	
-	}
-	
-	public void sendMessage() {
-		// TODO implement me	
+
+	public void sendMessage(User user) {
 	}
 	
 	public void viewNews() {
-		// TODO implement me	
 	}
+
+  public void editPassword(String password) {
+    
+  }
+
+
+  // Getters and setters
+	public String getFirstName() {
+		return this.firstName;	
+	}
+	
+	public String getLastName() {
+		return this.lastName;	
+	}
+	
+	public int getUserId() {
+		return this.id;	
+	}
+	
+	public String getEmail() {
+		return this.email;	
+	}
+	
+	public String getPhoneNumber() {
+		return this.phoneNumber;	
+	}
+	
+	public Gender getGender() {
+		return this.gender;	
+	}
+	
+	public String getUsername() {
+		return this.username;	
+	}
+	
+	public Date getRegistrationDate() {
+    return this.registrationDate;
+	}
+	
 }
