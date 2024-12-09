@@ -1,9 +1,14 @@
-package Users ;
+package Users;
 
 
+import java.util.*;
+
+import EnumsAndComparators.*;
+import UsersCapabilities.*;
+import Education.*;
 
 
-public abstract class  Student extends User implements Subscriber, Educationable, CanborrowBook
+public class Student extends User implements Educationable, CanborrowBook
 {
 	
 	private double gpa;
@@ -19,77 +24,92 @@ public abstract class  Student extends User implements Subscriber, Educationable
 	private Specialty specialty;
 	
 	private HashMap<Lesson, Mark> marks;
+
+  private ArrayList<Books> books;
+
+  private ArrayList<ScheduleEntry> examsSchedule;
+  private ArrayList<ScheduleEntry> lessonSchedule;
 	
-	private Gender gender;
-	public  Student(){
-		super();
+	public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber, double gpa, int studyYear, Faculty faculty, int availableECTS, int retakeNumber, Specialty specialty, HashMap<Lesson, Mark> marks){
+		super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
+    this.gpa = gpa;
+    this.studyYear = studyYear;
+    this.faculty = faculty;
+    this.availableECTS = availableECTS;
+    this.specialty = specialty;
+    this.marks = marks;
+  }
+
+	public boolean CanborrowBook(){
+    if(this.books.size() > 10){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  @Override
+  public void borrowBook(Books book) {
+    this.books.add(book);
+  }
+
+  @Override
+	public void returnBook(Books book) {
+		this.books.remove(book);
 	}
 	
-	public void returnBook() {
-		// TODO implement me	
+	public void retakeCourse(Course course) {
+		this.retakeNumber++;
 	}
 	
-	public void borrowBook() {
-		// TODO implement me	
-	}
 	
-	public void viewJournal() {
-		// TODO implement me	
-	}
-	
-	public void retakeDiscipline(Discipline parameter) {
-		// TODO implement me	
-	}
-	
-	public void addResearchPaper() {
-		// TODO implement me	
-	}
-	
-	public void addDropDiscipline() {
-		// TODO implement me	
-	}
-	
-	public void addDiscipline(Discipline parameter) {
-		// TODO implement me	
-	}
-	
-	public void disciplineRegestration() {
-		// TODO implement me	
-	}
-	
-	public void viewTranscript() {
-		// TODO implement me	
+	public void addCourse(Course parameter) {
+    // TODO implement me	
 	}
 	
 	public void viewAttendanceMark() {
-		// TODO implement me	
+    // TODO implement me	
 	}
 	
-	public void viewSchedule() {
-		// TODO implement me	
+	public ArrayList<ScheduleEntry> viewSchedule() {
+    return this.lessonSchedule;	
 	}
 	
 	public void viewAttestation() {
-		// TODO implement me	
+    // TODO implement me	
 	}
 	
 	public void viewTranscript() {
-		// TODO implement me	
+    // TODO implement me	
 	}
 	
-	public String getStudentPrivateData() {
-		// TODO implement me
-		return "";	
+	public String toString() {
+    return "Student{username: " + this.getUsername() + ", gpa: " + this.gpa + ", firstName: " + this.getFirstName() + ", lastName: " + this.getLastName() + ", studyYear: " + studyYear + ", specialty: " + specialty + ", marks: " + marks + ", books: " + books + ", retakeNumber: " + retakeNumber + "}";	
 	}
 	
 	public void showMyPapers() {
-		// TODO implement me	
+    // TODO implement me	
 	}
 	
-	public void viewExamsSchedule() {
-		// TODO implement me	
+  public void addResearchPaper() {
+    // TODO implement me	
+  }
+
+  @Override
+	public ArrayList<ScheduleEntry> viewExamsSchedule() {
+    return this.examsSchedule;
 	}
 	
+  @Override
+  public void viewCourseSchedule() {
+			
+	}
+	
+  @Override
+  public void viewJournal() {
+		// TODO implement me	
+	}
+
 	public void createOrganisation() {
 		// TODO implement me	
 	}

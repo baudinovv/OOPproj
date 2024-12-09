@@ -1,5 +1,5 @@
 import Users.*;
-import UserCapabilities.*;
+import UsersCapabilities.*;
 import EnumsAndComparators.*;
 import Education.*;
 import Communications.*;
