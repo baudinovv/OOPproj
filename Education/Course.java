@@ -16,7 +16,7 @@ public class Course
 	
 	private Teacher teachers;
 	
-	private  students = ;
+	private  students Arraylist<String> ;
 	
 	private Lesson lessons;
 	public Course(){

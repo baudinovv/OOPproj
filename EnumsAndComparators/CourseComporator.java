@@ -8,7 +8,7 @@ public class CourseComporator
 	}
 	
 	public int compareByCode(Course c1, Course c2) {
-    		return c1.getCode().compareTo(c2.getCode());
+    	return c1.getCode().compareTo(c2.getCode());
 }
 
 	public int compareByCredits(Course c1, Course c2) {
@@ -16,6 +16,6 @@ public class CourseComporator
 }
 
 	public int compareByEnrollment(Course c1, Course c2) {
-    		return Integer.compare(c1.getEnrollment(), c2.getEnrollment());
+    	return Integer.compare(c1.getEnrollment(), c2.getEnrollment());
 }
 }
