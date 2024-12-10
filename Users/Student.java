@@ -39,6 +39,9 @@ public class Student extends User implements Educationable, CanborrowBook
     this.specialty = specialty;
     this.marks = marks;
   }
+	public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber){
+		super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
+  }
 
 	public boolean CanborrowBook(){
     if(this.books.size() > 10){
