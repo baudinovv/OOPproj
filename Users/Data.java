@@ -16,7 +16,7 @@ public class Data
 	
 	public Manager Manager;
 	
-	public Books Book;
+	public Book Book;
 	public Data(){
 		super();
 	}

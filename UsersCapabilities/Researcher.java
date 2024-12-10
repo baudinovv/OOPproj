@@ -1,9 +1,6 @@
-package UsersCapabilities A ;
+package UsersCapabilities;
 
 
-
-
- */
 public  interface Researcher 
 {
 }

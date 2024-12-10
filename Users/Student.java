@@ -25,7 +25,7 @@ public class Student extends User implements Educationable, CanborrowBook
 	
 	private HashMap<Lesson, Mark> marks;
 
-  private ArrayList<Books> books;
+  private ArrayList<Book> books;
 
   private ArrayList<ScheduleEntry> examsSchedule;
   private ArrayList<ScheduleEntry> lessonSchedule;
@@ -49,12 +49,12 @@ public class Student extends User implements Educationable, CanborrowBook
   }
 
   @Override
-  public void borrowBook(Books book) {
+  public void borrowBook(Book book) {
     this.books.add(book);
   }
 
   @Override
-	public void returnBook(Books book) {
+	public void returnBook(Book book) {
 		this.books.remove(book);
 	}
 	

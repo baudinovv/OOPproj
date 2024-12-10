@@ -1,12 +1,12 @@
 package UsersCapabilities ;
 
-import Users.Books;
+import Users.Book;
 
 public  interface CanborrowBook 
 {
 	
-	public void borrowBook(Books book) ;
+	public void borrowBook(Book book) ;
 	
-	public void returnBook(Books book) ;
+	public void returnBook(Book book) ;
 }
 

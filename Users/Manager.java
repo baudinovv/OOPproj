@@ -1,16 +1,26 @@
 package Users ;
 
-
-
+import java.util.*;
+import EnumsAndComparators.*;
+import UsersCapabilities.CanViewResearches;
+import UsersCapabilities.Manageable;
 
 public class Manager extends Employee implements CanViewResearches, Manageable
 {
 	
-	private Manage Position manage_position;
-	public Manager(){
-		super();
+	private ManagePosition managerPosition;
+	public Manager(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber){
+		super(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
+	}
+	public Manager(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber, ManagePosition managerPosition){
+		super(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
+    this.managerPosition = managerPosition;
 	}
 	
+  public void setManagerPosition(ManagePosition managerPosition){
+    this.managerPosition = managerPosition;
+  }
+
 	public void addDiscipline() {
 		// TODO implement me	
 	}
