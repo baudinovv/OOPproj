@@ -34,4 +34,17 @@ public abstract class Employee extends User
     this.message = message;
   }
 
+public Date getHireDate() {
+    return hireDate;
+}
+
+public double getSalary() {
+    return salary;
+}
+
+public Message getMessage() {
+    return message;
+}
+
+
 }
