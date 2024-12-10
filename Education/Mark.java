@@ -29,6 +29,10 @@ public class Mark {
     journal.add(mark);
   }
 
+  public List<Integer> getJournal(){
+    return this.journal;
+  }
+
   public int calculateFirstHalf() {
     if (journal.isEmpty()) {
       return 0;

@@ -23,12 +23,12 @@ public class Student extends User implements Educationable, CanborrowBook
 	
 	private Specialty specialty;
 	
-	private HashMap<Course, Mark> marks;
+	private HashMap<Course, Mark> marks = new HashMap<>();
 
   private ArrayList<Book> books;
 
-  private ArrayList<ScheduleEntry> examsSchedule;
-  private ArrayList<ScheduleEntry> lessonSchedule;
+  private ArrayList<ScheduleEntry> examsSchedule = new ArrayList<>();
+  private ArrayList<ScheduleEntry> lessonSchedule = new ArrayList<>();
 	
 	public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber, double gpa, int studyYear, Faculty faculty, int availableECTS, int retakeNumber, Specialty specialty, HashMap<Course, Mark> marks){
 		super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
@@ -66,14 +66,19 @@ public class Student extends User implements Educationable, CanborrowBook
 	}
 	
 	
-	public void addCourse(Course parameter) {
-    //
+	public void addCourse(Course course) {
+    this.marks.put(course, new Mark());
 	}
 	
-	public ArrayList<ScheduleEntry> viewSchedule() {
-    return this.lessonSchedule;	
-	}
+	public Mark getMark(Course key){
+    return this.marks.get(key);
+  }
 	
+  public HashMap<Course, Mark> getMarks(){
+    return this.marks;
+  }
+
+
 	public void viewAttestation() {
     // TODO implement me	
 	}
@@ -82,9 +87,9 @@ public class Student extends User implements Educationable, CanborrowBook
     // TODO implement me	
 	}
 	
-	public String toString() {
-    return "Student{username: " + this.getUsername() + ", gpa: " + this.gpa + ", firstName: " + this.getFirstName() + ", lastName: " + this.getLastName() + ", studyYear: " + studyYear + ", specialty: " + specialty + ", marks: " + marks + ", books: " + books + ", retakeNumber: " + retakeNumber + "}";	
-	}
+	// public String toString() {
+  //   return "Student{username: " + this.getUsername() + ", gpa: " + this.gpa + ", firstName: " + this.getFirstName() + ", lastName: " + this.getLastName() + ", studyYear: " + studyYear + ", specialty: " + specialty + ", marks: " + marks + ", books: " + books + ", retakeNumber: " + retakeNumber + "}";	
+	// }
 	
 	public void showMyPapers() {
     // 	

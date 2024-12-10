@@ -2,11 +2,13 @@ package Education;
 
 import Users.*;
 import EnumsAndComparators.*;
+
+import java.sql.Time;
 import java.util.*;
 
 public class Lesson {
 
-  private String LessonName;
+  private String lessonName;
 
   private Teacher teacher;
 
@@ -20,7 +22,18 @@ public class Lesson {
 
   private Map<Student, List<Mark>> studentGrades;
 
-  public Lesson() {
+  private Time lessonTime;
+
+  private WeekDay lessonDay;
+
+  private String room;
+
+  public Lesson(String lessonName, Teacher teacher, Course course, ScheduleEntry lessonInfo, Language language) {
+    this.lessonName = lessonName;
+    this.teacher = teacher;
+    this.course = course;
+    this.lessonInfo = lessonInfo;
+    this.Language = language;
     this.enrolledStudents = new ArrayList<>();
     this.studentGrades = new HashMap<>();
   }
@@ -30,12 +43,12 @@ public class Lesson {
       throw new IllegalStateException("No grades available");
     }
     studentGrades.forEach((student, grades) -> {
-      System.out.println("Student: " + student.getName());
+      System.out.println("Student: " + student.getFirstName() + " " + student.getLastName());
       System.out.println("Grades: " + grades);
     });
   }
 
-  public List<Grade> getMarks(Student student) {
+  public List<Mark> getMarks(Student student) {
     if (!enrolledStudents.contains(student)) {
       throw new IllegalArgumentException("Student not enrolled in this lesson");
     }
@@ -48,7 +61,7 @@ public class Lesson {
     }
     enrolledStudents.add(student);
     studentGrades.put(student, new ArrayList<>());
-    System.out.println("Student " + student.getName() + " registered for " + lessonName);
+    System.out.println("Student " + student.getFirstName() + " registered for " + this.lessonName);
   }
 
   public void scheduleLesson(Time time, WeekDay day, String room) {

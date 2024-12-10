@@ -17,16 +17,16 @@ public class Course {
 
   private ArrayList<Student> students;
 
-  private Lesson lessons;
+  private ArrayList<Lesson> lessons;
 
-  public Course(String courseId, String name, int credits, String type, Teacher teachers, Lesson lessons) {
+  public Course(String courseId, String name, int credits, String type, Teacher teachers, ArrayList<Lesson> lessons, ArrayList<Student> students) {
     this.courseId = courseId;
     this.name = name;
     this.credits = credits;
     this.type = type;
     this.teachers = teachers;
     this.lessons = lessons;
-    this.students = new ArrayList<>();
+    this.students = students;
   }
 
   public void addStudent(Student student) {
@@ -45,12 +45,33 @@ public class Course {
     return name;
   }
 
-  public Lesson getLesson() {
-    return lessons;
+  public ArrayList<Lesson> getLesson() {
+    return this.lessons;
+  }
+
+  public void addLesson(Lesson e){
+    this.lessons.add(e);
+  }
+
+  public ArrayList<Student> getStudents(){
+    return this.students;
   }
 
   public int getCredits() {
     return credits;
+  }
+
+  public String toString() {
+    return "Course{" +
+        "courseId='" + courseId + '\'' +
+        ", name='" + name + '\'' +
+        ", credits=" + credits +
+        ", type='" + type + '\'' +
+        ", teacher=" + teachers.getFirstName() + " " + teachers.getLastName() +
+        ", students=[" + (students.isEmpty() ? "No students enrolled" : students.toString()) + "]" +
+        ", lessons=" + lessons +
+        '}';
+
   }
 
 }
