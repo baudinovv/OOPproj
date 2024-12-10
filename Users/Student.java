@@ -76,8 +76,18 @@ public class Student extends User implements Educationable, CanborrowBook
 	}
 	
 	public void viewAttestation() {
-    // TODO implement me	
-	}
+        if (marks.isEmpty()) {
+            throw new IllegalStateException("No attestation marks available");
+        }
+        marks.forEach((lesson, mark) -> {
+            double firstAtt = mark.calculateFirstHalf();
+            double secondAtt = mark.calculateSecondHalf();
+            System.out.println(lesson.getCourseName() + ":");
+            System.out.println("First Attestation: " + firstAtt + "/30");
+            System.out.println("Second Attestation: " + secondAtt + "/30");
+            System.out.println("Current Total: " + (firstAtt + secondAtt) + "/60");
+        });
+    }
 	
 	public void viewTranscript() {
     // TODO implement me	
