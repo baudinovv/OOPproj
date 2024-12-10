@@ -23,14 +23,14 @@ public class Student extends User implements Educationable, CanborrowBook
 	
 	private Specialty specialty;
 	
-	private HashMap<Lesson, Mark> marks;
+	private HashMap<Course, Mark> marks;
 
   private ArrayList<Book> books;
 
   private ArrayList<ScheduleEntry> examsSchedule;
   private ArrayList<ScheduleEntry> lessonSchedule;
 	
-	public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber, double gpa, int studyYear, Faculty faculty, int availableECTS, int retakeNumber, Specialty specialty, HashMap<Lesson, Mark> marks){
+	public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber, double gpa, int studyYear, Faculty faculty, int availableECTS, int retakeNumber, Specialty specialty, HashMap<Course, Mark> marks){
 		super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
     this.gpa = gpa;
     this.studyYear = studyYear;
@@ -64,11 +64,7 @@ public class Student extends User implements Educationable, CanborrowBook
 	
 	
 	public void addCourse(Course parameter) {
-    // TODO implement me	
-	}
-	
-	public void viewAttendanceMark() {
-    // TODO implement me	
+    //
 	}
 	
 	public ArrayList<ScheduleEntry> viewSchedule() {
@@ -88,7 +84,7 @@ public class Student extends User implements Educationable, CanborrowBook
 	}
 	
 	public void showMyPapers() {
-    // TODO implement me	
+    // 	
 	}
 	
   public void addResearchPaper() {
@@ -101,16 +97,16 @@ public class Student extends User implements Educationable, CanborrowBook
 	}
 	
   @Override
-  public void viewCourseSchedule() {
-			
+  public ArrayList<ScheduleEntry> viewLessonSchedule() {
+    return this.lessonSchedule;
 	}
 	
   @Override
   public void viewJournal() {
-		// TODO implement me	
+		//
 	}
 
-	public void createOrganisation() {
-		// TODO implement me	
+	public Organizations createOrganisation(String organizationName, List<Student> members, Student head, String organizationInfo) {
+    return new Organizations(organizationName, members, this, organizationInfo);
 	}
 }

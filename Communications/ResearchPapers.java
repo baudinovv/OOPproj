@@ -1,9 +1,6 @@
 package Communications ;
 
-
-
-
-public class Research Papers
+public class ResearchPapers
 {
 	
 	private int paper_id;

@@ -14,15 +14,15 @@ public class Admin extends TechSupport implements UsersFactory {
   @Override
   public User Factory(String userType, String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber) {
     switch (userType.toLowerCase()) {
-      case "Admin":
+      case "admin":
         return new Admin(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
-      case "TechSupport":
+      case "techSupport":
         return new TechSupport(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
-      case "Teacher":
+      case "teacher":
         return new Teacher(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
-      case "Manager":
+      case "nanager":
         return new Manager(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
-      case "Librarian":
+      case "librarian":
         return new Librarian(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
       default:
         throw new IllegalArgumentException("Unknown user type: " + userType);
