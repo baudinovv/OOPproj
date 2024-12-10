@@ -14,7 +14,6 @@ public abstract class User
 	
 	private String username;
 
-	
 	private Date registrationDate;
 	
 	private String phoneNumber;
