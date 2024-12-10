@@ -64,14 +64,6 @@ public class Teacher extends Employee implements Manageable, CanborrowBook
 		// TODO implement me	
 	}
 	
-	public void attestationMark() {
-		// TODO implement me	
-	}
-	
-	public void attendanceJournal() {
-		// TODO implement me	
-	}
-	
 	public int journalMark() {
     
     Scanner input = new Scanner(System.in);
