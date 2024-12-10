@@ -43,6 +43,30 @@ public class Student extends User implements Educationable, CanborrowBook
 		super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
   }
 
+public void setGpa(double gpa) {
+    this.gpa = gpa;
+}
+
+public void setStudyYear(int studyYear) {
+    this.studyYear = studyYear;
+}
+
+public void setFaculty(Faculty faculty) {
+    this.faculty = faculty;
+}
+
+public void setAvailableECTS(int availableECTS) {
+    this.availableECTS = availableECTS;
+}
+
+public void setSpecialty(Specialty specialty) {
+    this.specialty = specialty;
+}
+
+public void setMarks(HashMap<Course, Mark> marks) {
+    this.marks = marks;
+}
+
 	public boolean CanborrowBook(){
     if(this.books.size() > 10){
       return false;
