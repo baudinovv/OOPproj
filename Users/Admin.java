@@ -1,63 +1,35 @@
-package Users ;
+package Users;
 
+import java.util.function.Supplier;
 
+import UsersCapabilities.UsersFactory;
 
+public class Admin extends TechSupport implements UsersFactory {
+  public Admin() {
+    super();
+  }
 
-public class Admin extends TechSupport implements UsersFactory
-{
-	public Admin(){
-		super();
-	}
-	
-	public void createTeacher() {
-		// TODO implement me	
-	}
-	
-	public void createStudent() {
-		// TODO implement me	
-	}
-	
-	public void createUser() {
-		// TODO implement me	
-	}
-	
-	public void createBook() {
-		// TODO implement me	
-	}
-	
-	public void createLibrarian() {
-		// TODO implement me	
-	}
-	
-	public void createManager() {
-		// TODO implement me	
-	}
-	
-	public void createResearcher() {
-		// TODO implement me	
-	}
-	
-	public void createProfessor() {
-		// TODO implement me	
-	}
-	
-	public void createEmployeeResearcher() {
-		// TODO implement me	
-	}
-	
-	public void showMenu() {
-		// TODO implement me	
-	}
-	
-	public void deleteUser() {
-		// TODO implement me	
-	}
-	
-	public void addRequest() {
-		// TODO implement me	
-	}
-	
-	public void viewOrders() {
-		// TODO implement me	
-	}
+  @Override
+  public User Factory(String userType) {
+    switch (userType.toLowerCase()) {
+      case "Admin":
+        return new Admin();  
+      case "TechSupport":
+        return new TechSupport();  
+      case "Teacher":
+        return new Teacher();  
+      case "Manager":
+        return new Manager();  
+      case "Professor":
+        return new Professor();  
+      case "Librarian":
+        return new Librarian();  
+      case "Organizations":
+        return new Organiztions();  
+      case "Books":
+        return new Books();  
+      default:
+        throw new IllegalArgumentException("Unknown user type: " + userType);
+    }
+  }
 }

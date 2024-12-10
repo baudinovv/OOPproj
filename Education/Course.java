@@ -16,26 +16,42 @@ public class Course
 	
 	private Teacher teachers;
 	
-	private  students = ;
+	private  ArrayList<String>  students;
 	
 	private Lesson lessons;
-	public Course(){
-		super();
-	}
+
+	 public Course(String courseId, String name, int credits, String type, Teacher teachers, Lesson lessons) {
+        this.courseId = courseId;
+        this.name = name;
+        this.credits = credits;
+        this.type = type;
+        this.teachers = teachers;
+        this.lessons = lessons;
+        this.students = new ArrayList<>();
+    }
 	
 	public void addStudent(Student student) {
-		// TODO implement me	
-	}
+        if (student != null) {
+            students.add(student.getName());
+        }
+    }
 	
 	public void removeStudent(Student student) {
-		// TODO implement me	
-	}
+        if (student != null) {
+            students.remove(student.getName());
+        }
+    }
+
 	
-	public void getCourseName() {
-		// TODO implement me	
-	}
-	
-	public void getLesson() {
-		// TODO implement me	
-	}
+	public String getCourseName() {
+        return name;
+    }
+
+    public Lesson getLesson() {
+        return lessons;
+    }
+	 public int getCredits() {
+        return credits;
+    }
+
 }

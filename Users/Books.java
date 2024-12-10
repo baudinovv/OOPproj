@@ -8,7 +8,7 @@ public class Books
 	
 	private String bookName;
 	
-	private String author;
+	private String authss	;
 	
 	private String bookId;
 	

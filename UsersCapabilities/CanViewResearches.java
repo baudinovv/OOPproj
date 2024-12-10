@@ -1,9 +1,6 @@
 package UsersCapabilities ;
 
 
-
-
- */
 public  interface CanViewResearches 
 {
 	
