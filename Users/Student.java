@@ -67,6 +67,31 @@ public void setMarks(HashMap<Course, Mark> marks) {
     this.marks = marks;
 }
 
+public double getGpa() {
+    return gpa;
+}
+
+public int getStudyYear() {
+    return studyYear;
+}
+
+public Faculty getFaculty() {
+    return faculty;
+}
+
+public int getAvailableECTS() {
+    return availableECTS;
+}
+
+public Specialty getSpecialty() {
+    return specialty;
+}
+
+public HashMap<Course, Mark> getMarks() {
+    return marks;
+}
+
+
 	public boolean CanborrowBook(){
     if(this.books.size() > 10){
       return false;
