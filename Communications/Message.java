@@ -20,6 +20,16 @@ public class Message {
         this.status = MessageStatus.UNREAD;  // По умолчанию сообщение не прочитано
     }
 
+     public Message(Employee sender, User recipient, String content, UrgencyLevel level, MessageStatus status, String request) {
+        this.sender = sender;
+        this.recipient = recipient;
+        this.content = content;
+        this.timestamp = new Date();
+        this.level = level;
+        this.status = status;
+        this.request = request;
+    }
+
     public Employee getSender() {
         return sender;
     }
