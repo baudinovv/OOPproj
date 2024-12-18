@@ -1,8 +1,8 @@
 package Communications;
 
 import java.util.Date;
-import EnumsAndComparators.UrgencyLevel;
-import EnumsAndComparators.MessageStatus;
+import Users.*;
+import EnumsAndComparators.*;
 
 public class Message {
 
