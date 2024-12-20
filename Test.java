@@ -3,8 +3,18 @@ import UsersCapabilities.*;
 import EnumsAndComparators.*;
 import Education.*;
 import Communications.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
+import javax.sql.DataSource;
+
+import org.postgresql.ds.PGSimpleDataSource;
+
+import Data.*;
 // public class Test {
 //   public static void main(String[] args) {
 //     Admin admin = new Admin("Alisher", "Baudinov", 1, null, null, null, null, null, 0);
@@ -46,6 +56,25 @@ import java.util.*;
 // }
 
 public class Test {
+
+  private static DataSource createDataSource(){
+    final String url =
+     "jdbc:postgresql://localhost:5432/wsp?user=postgres&password=postgres";
+    final PGSimpleDataSource dataSource = new PGSimpleDataSource();
+    dataSource.setURL(url);
+    return dataSource;
+  }
+
+  public static void getUsers(Connection conn ) throws SQLException {
+    PreparedStatement stat = conn.prepareStatement("select * from users");
+    ResultSet rs = stat.executeQuery();
+    
+    while (rs.next()) {
+      System.out.println(rs.getString(2) + " " + rs.getString(3) + " " + rs.getString(4));
+    }
+    
+  }
+
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
@@ -56,6 +85,7 @@ public class Test {
       System.out.println("1. Student Operations");
       System.out.println("2. Teacher Operations");
       System.out.println("3. Exit");
+      System.out.println("4. Alisher test login");
       System.out.print("Choose an option: ");
 
       int choice = scanner.nextInt();
@@ -72,10 +102,22 @@ public class Test {
         case 3:
           System.out.println("Exiting system...");
           return;
+        case 4:
+          DataSource dataSource = createDataSource();
+          try {
+            Connection conn = dataSource.getConnection(); 
+            getUsers(conn);
+          } catch (Exception e) {
+            System.out.println("Connection error");
+          }
+
+
+          return;
 
         default:
           System.out.println("Invalid option. Please try again.");
       }
+      scanner.close();
     }
   }
 
