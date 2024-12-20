@@ -50,7 +50,7 @@ public class Test {
 
     Scanner scanner = new Scanner(System.in);
     Admin admin = new Admin("Alisher", "Baudinov", 1, null, null, null, null, null, 0);
-
+    
     while (true) {
       System.out.println("\n=== University Management System ===");
       System.out.println("1. Student Operations");
@@ -81,8 +81,8 @@ public class Test {
 
   private static void handleStudentOperations(Admin admin) {
     Scanner scanner = new Scanner(System.in);
-    Student student = (Student) admin.Factory("Student", "Birzhan", null, 0, null, null, null, null, null, 0);
-
+    Student student = (Student) admin.Factory("Student", "Birzhan","Artykbay", 0, null, null, null, null, null, 0);
+    
     System.out.println("\n=== Student Operations ===");
     System.out.println("1. View Schedule");
     System.out.println("2. View Transcript");
@@ -94,7 +94,7 @@ public class Test {
 
     switch (choice) {
       case 1:
-        // student.viewSchedule();
+        student.viewSchedule();
         break;
       case 2:
         student.viewTranscript();
@@ -103,7 +103,8 @@ public class Test {
         student.viewAttestation();
         break;
       case 4:
-        // student.viewAttendanceMark();
+    	
+        student.viewAttendanceMark();
         break;
       default:
         System.out.println("Invalid option.");
@@ -114,12 +115,12 @@ public class Test {
     Scanner scanner = new Scanner(System.in);
 
     Student student = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student2 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student3 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student4 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student5 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student6 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
-    Student student7 = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student2 = (Student) admin.Factory("student", "Sonya2", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student3 = (Student) admin.Factory("student", "Sonya3", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student4 = (Student) admin.Factory("student", "Sonya4", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student5 = (Student) admin.Factory("student", "Sonya5", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student6 = (Student) admin.Factory("student", "Sonya6", "Marmaladova", 0, null, null, null, null, null, 0);
+    Student student7 = (Student) admin.Factory("student", "Sonya7", "Marmaladova", 0, null, null, null, null, null, 0);
 
     Teacher teacher = (Teacher) admin.Factory("teacher", "Assylzhan", "Isbassar", 0, null, null, null, null, null, 0);
 
@@ -131,9 +132,9 @@ public class Test {
     group.add(student5);
     group.add(student6);
     group.add(student7);
-    Course course = new Course("1", "Calculus 1", 5, "Minor", teacher, new ArrayList<>(), group);
-
-    Lesson lesson = new Lesson("Calculus 1", teacher, course, null, null);
+    Course course = new Course("1", "OOP", 5, "Minor", teacher, new ArrayList<>(), group);
+    
+    Lesson lesson = new Lesson("OOP", teacher, course, null, null);
     course.addLesson(lesson);
 
     student.addCourse(course);
@@ -149,7 +150,7 @@ public class Test {
     System.out.println("\n=== Teacher Operations ===");
     System.out.println("1. Put marks");
     System.out.println("2. Record Attendance");
-    System.out.println("3. Add Attestation Mark");
+    System.out.println("3. view Student Info");
     System.out.print("Choose an option: ");
 
     int choice = scanner.nextInt();
@@ -161,12 +162,13 @@ public class Test {
         teacher.journalMark();
         break;
       case 2:
-        // Implement attendance recording logic
+        teacher.recordAttendance(course, group);
+        student.getAttendanceForCourse(course);
         System.out.println("Attendance recording functionality");
         break;
       case 3:
-        // Implement attestation mark logic
-        System.out.println("Attestation mark functionality");
+        teacher.viewStudentInfo();
+        System.out.println("View student information");
         break;
       default:
         System.out.println("Invalid option.");
