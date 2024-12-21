@@ -70,4 +70,17 @@ public class Lesson {
     this.room = room;
     System.out.println("Lesson scheduled for " + day + " at " + time + " in room " + room);
   }
+
+  public Teacher getTeacher(){
+    return this.teacher;
+  }
+
+  public Time LessonTime(){
+    return this.lessonTime;
+  }
+
+  public String getRoom(){
+    return this.room;
+  }
+
 }

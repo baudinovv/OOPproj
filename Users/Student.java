@@ -51,9 +51,9 @@ public class Student extends User implements Educationable, CanborrowBook {
   private ArrayList<ScheduleEntry> examsSchedule = new ArrayList<>();
   private ArrayList<ScheduleEntry> lessonSchedule = new ArrayList<>();
 
-private HashMap<Course, Mark> attendance;
-private List<Course> courses;
-
+  private HashMap<Course, Mark> attendance;
+  private List<Course> courses = new ArrayList<>();
+  
   public Student(String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber,Gender gender, String email, int passportNumber, double gpa, int studyYear, Faculty faculty, int availableECTS,int retakeNumber, Specialty specialty, HashMap<Course, Mark> marks,List<Course> courses) {
     super(firstName, lastName, id, username, registrationDate, phoneNumber, gender, email, passportNumber);
     this.gpa = gpa;
@@ -137,10 +137,8 @@ private List<Course> courses;
   }
 
   public void addCourse(Course course) {
-	    if (this.courses == null) {
-	        this.courses = new ArrayList<>();
-	    }
-	    this.courses.add(course);
+	  this.courses.add(course);
+    this.marks.put(course, new Mark());
 	}
   public List<Course> getCourses() {
 	    return courses;

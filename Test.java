@@ -78,84 +78,125 @@ public class Test {
   public static void main(String[] args) {
 
     Scanner scanner = new Scanner(System.in);
-    Admin admin = new Admin("Alisher", "Baudinov", 1, null, null, null, null, null, 0);
+        
+    System.out.println("\n=== University Management System ===");
+    System.out.println("1. Please log in");
+    System.out.println("2. Exit");
     
-    while (true) {
-      System.out.println("\n=== University Management System ===");
-      System.out.println("1. Student Operations");
-      System.out.println("2. Teacher Operations");
-      System.out.println("3. Exit");
-      System.out.println("4. Alisher test login");
-      System.out.print("Choose an option: ");
+    DataSource dataSource = createDataSource();
+    try {
+      Connection conn = dataSource.getConnection(); 
+      Data data = new Data();
+      // System.out.println(data.hashPassword("alisher"));
+      // System.out.println(data.hashPassword("password"));
+      System.out.print("Enter username: ");
+      String userInput = scanner.nextLine();
+      
+      System.out.print("Enter password: ");
+      String passwordInput = scanner.nextLine();
+      
 
-      int choice = scanner.nextInt();
+      while (true) {
+        // if(data.checkPassword(conn, userInput, passwordInput)) {
+        if(true) {
+            switch (Data.checkRole(conn , userInput)) {
+              case "teacher":
+                handleTeacherOperations(userInput, conn);
+                break;
+              case "student":
+                handleStudentOperations(userInput);
+              default:
+                System.out.println("Wrong user role");
+                break;
+            }
+          } else {
+            System.out.println("");
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Wrong password, please try again");
+            System.out.println("\n=== University Management System ===");
+            System.out.println("1. Please log in");
+            System.out.println("2. Exit");
+            System.out.print("Enter username: ");
+            userInput = scanner.nextLine();
 
-      switch (choice) {
-        case 1:
-          handleStudentOperations(admin);
-          break;
-
-        case 2:
-          handleTeacherOperations(admin);
-          break;
-
-        case 3:
-          System.out.println("Exiting system...");
-          return;
-        case 4:
-          DataSource dataSource = createDataSource();
-          try {
-            Connection conn = dataSource.getConnection(); 
-            getUsers(conn);
-          } catch (Exception e) {
-            System.out.println("Connection error");
+            System.out.print("Enter password: ");
+            passwordInput = scanner.nextLine();
           }
+        }
+
+      // int choice = scanner.nextInt();
+
+      // switch (choice) {
+      //   case 1:
+      //     handleStudentOperations(admin);
+      //     break;
+
+      //   case 2:
+      //     handleTeacherOperations(admin);
+      //     break;
+
+      //   case 3:
+      //     System.out.println("Exiting system...");
+      //     return;
+      //   case 4:
+          
 
 
-          return;
+      //     return;
 
-        default:
-          System.out.println("Invalid option. Please try again.");
-      }
-      scanner.close();
+      //   default:
+      //     System.out.println("Invalid option. Please try again.");
+      // }
+      // scanner.close();
+    } catch (Exception e) {
+      System.out.println("Connection to database failed: " + e);
+      e.printStackTrace();
     }
   }
 
-  private static void handleStudentOperations(Admin admin) {
+  private static void handleStudentOperations(String username) {
     Scanner scanner = new Scanner(System.in);
+    Admin admin = new Admin("Alisher", "Baudinov", 1, null, null, null, null, null, 0);
     Student student = (Student) admin.Factory("Student", "Birzhan","Artykbay", 0, null, null, null, null, null, 0);
     
     System.out.println("\n=== Student Operations ===");
+    System.out.println("Success login.");
+    System.out.println("");
     System.out.println("1. View Schedule");
     System.out.println("2. View Transcript");
     System.out.println("3. View Attestation");
     System.out.println("4. View Attendance");
     System.out.print("Choose an option: ");
-
+    
     int choice = scanner.nextInt();
-
+    
     switch (choice) {
       case 1:
-        student.viewSchedule();
-        break;
+      student.viewSchedule();
+      break;
       case 2:
-        student.viewTranscript();
-        break;
+      student.viewTranscript();
+      break;
       case 3:
-        student.viewAttestation();
-        break;
+      student.viewAttestation();
+      break;
       case 4:
     	
-        student.viewAttendanceMark();
-        break;
+      student.viewAttendanceMark();
+      break;
       default:
-        System.out.println("Invalid option.");
+      System.out.println("Invalid option.");
     }
   }
-
-  private static void handleTeacherOperations(Admin admin) {
+  
+  private static void handleTeacherOperations(String username, Connection conn) {
     Scanner scanner = new Scanner(System.in);
+    
+    
 
+
+    Admin admin = new Admin("Alisher", "Baudinov", 1, null, null, null, null, null, 0);
     Student student = (Student) admin.Factory("student", "Sonya", "Marmaladova", 0, null, null, null, null, null, 0);
     Student student2 = (Student) admin.Factory("student", "Sonya2", "Marmaladova", 0, null, null, null, null, null, 0);
     Student student3 = (Student) admin.Factory("student", "Sonya3", "Marmaladova", 0, null, null, null, null, null, 0);
@@ -201,7 +242,29 @@ public class Test {
       case 1:
         System.out.println("1. Put marks");
         System.out.println("2. Press Escape to back main menu");
-        teacher.journalMark();
+        // teacher.journalMark(conn);
+        Data data = new Data();
+        try {
+          PreparedStatement stat = conn.prepareStatement("select id from users where username=?");
+          stat.setString(1, username);
+          ResultSet rs = stat.executeQuery();
+
+          int teacherId = 0;
+          while(rs.next()){
+            teacherId = rs.getInt(1);
+          }
+
+          stat = conn.prepareStatement("select * from teachers, users where teacher_id=id AND id=?");
+          stat.setInt(1, teacherId);
+          rs = stat.executeQuery();
+
+          while(rs.next()){
+            System.out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getString(4) + " " + rs.getString(5) + " " + rs.getString(6) + " " + rs.getString(7));
+          }
+
+        } catch (Exception e) {
+          // TODO: handle exception
+        }
         break;
       case 2:
         teacher.recordAttendance(course, group);

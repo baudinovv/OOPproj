@@ -5,15 +5,15 @@ import Communications.*;
 
 public class Mark {
 
-  private int value;
+  private double value;
 
   private HashSet<ScheduleEntry> lessonSchedule;
 
-  private int attestationResult;
+  private double attestationResult;
 
-  private int percentageOfMark;
+  private double percentageOfMark;
 
-  private int finalGrade;
+  private double finalGrade;
 
   private List<Integer> journal;
 
@@ -65,14 +65,14 @@ public class Mark {
     return count > 0 ? sum / count : 0;
   }
 
-  public int calculateFinalGrade(int finalGrade) {
+  public double calculateFinalGrade(double finalGrade) {
     int firstHalf = calculateFirstHalf();
     int secondHalf = calculateSecondHalf();
     this.finalGrade = firstHalf + secondHalf + finalGrade;
     return this.finalGrade;
 }
 
-  public String convertToLetterGrade(int value) {
+  public String convertToLetterGrade(double value) {
     if (value >= 95)
       return "A";
     if (value >= 90)

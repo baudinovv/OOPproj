@@ -1,9 +1,5 @@
 package UsersCapabilities ;
 
-
-
-
- */
 public  interface Subscriber 
 {
 	
