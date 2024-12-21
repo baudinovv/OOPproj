@@ -71,16 +71,18 @@ public class Lesson {
     System.out.println("Lesson scheduled for " + day + " at " + time + " in room " + room);
   }
 
-  public Teacher getTeacher(){
-    return this.teacher;
-  }
+public User getTeacher() {
+	return teacher;
+}
 
-  public Time LessonTime(){
-    return this.lessonTime;
-  }
+public String getRoom() {
+	return room;
+}
+public Time LessonTime() {
+	return lessonTime;
+}
 
-  public String getRoom(){
-    return this.room;
-  }
-
+public String getLessonName() {
+	return lessonName;
+}
 }
