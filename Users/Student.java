@@ -6,6 +6,11 @@ import java.util.Map.Entry;
 import EnumsAndComparators.*;
 import UsersCapabilities.*;
 import Education.*;
+import org.postgresql.util.PSQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 class AttendanceRecord {
     private Student student;
@@ -152,17 +157,17 @@ public class Student extends User implements Educationable, CanborrowBook {
   }
 
   public void viewAttestation() {
-      if (marks.isEmpty()) {
-          throw new IllegalStateException("No attestation marks available");
-      }
-      marks.forEach((lesson, mark) -> {
-          double firstAtt = mark.calculateFirstHalf();
-          double secondAtt = mark.calculateSecondHalf();
-          System.out.println(lesson.getCourseName() + ":");
-          System.out.println("First Attestation: " + firstAtt + "/30");
-          System.out.println("Second Attestation: " + secondAtt + "/30");
-          System.out.println("Current Total: " + (firstAtt + secondAtt) + "/60");
-      });
+    if (marks.isEmpty()) {
+      throw new IllegalStateException("No attestation marks available");
+    }
+    marks.forEach((lesson, mark) -> {
+      double firstAtt = mark.calculateFirstHalf();
+      double secondAtt = mark.calculateSecondHalf();
+      System.out.println(lesson.getCourseName() + ":");
+      System.out.println("First Attestation: " + firstAtt + "/30");
+      System.out.println("Second Attestation: " + secondAtt + "/30");
+      System.out.println("Current Total: " + (firstAtt + secondAtt) + "/60");
+    });
   }
 
   public void viewTranscript() {
@@ -267,7 +272,7 @@ public class Student extends User implements Educationable, CanborrowBook {
 
 @Override
   public void viewJournal() {
-    //
+    
   }
 
   public Organizations createOrganisation(String organizationName, List<Student> members, Student head,String organizationInfo) {

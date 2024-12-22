@@ -34,17 +34,27 @@ public abstract class Employee extends User
     this.message = message;
   }
 
-public Date getHireDate() {
-    return hireDate;
-}
+  public Date getHireDate() {
+      return hireDate;
+  }
 
-public double getSalary() {
-    return salary;
-}
+  public double getSalary() {
+      return salary;
+  }
 
-public Message getMessage() {
-    return message;
-}
+  public Message getMessage() {
+      return message;
+  }
+
+  @Override
+  public String toString() {
+    return "Employee{" +
+      "salary=" + salary +
+      ", hireDate=" + hireDate +
+      ", message=" + message +
+      ", " + super.toString() +
+      '}';
+  }
 
 
 }

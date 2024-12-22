@@ -19,6 +19,15 @@ public class Course {
 
   private ArrayList<Lesson> lessons;
 
+  public Course(String courseId, String name, int credits, String type, Teacher teachers, ArrayList<Lesson> lessons) {
+    this.courseId = courseId;
+    this.name = name;
+    this.credits = credits;
+    this.type = type;
+    this.teachers = teachers;
+    this.lessons = lessons;
+  }
+
   public Course(String courseId, String name, int credits, String type, Teacher teachers, ArrayList<Lesson> lessons, ArrayList<Student> students) {
     this.courseId = courseId;
     this.name = name;
@@ -33,6 +42,10 @@ public class Course {
     if (student != null) {
       students.add(student);
     }
+  }
+
+  public void setStudents(ArrayList<Student> students){
+    this.students = students;
   }
 
   public void removeStudent(Student student) {

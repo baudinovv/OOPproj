@@ -1,6 +1,4 @@
-package Project A ;
-
-
+package EnumsAndComparators;
 
 public enum TeacherType
 {

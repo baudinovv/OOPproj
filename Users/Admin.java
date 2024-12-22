@@ -15,7 +15,7 @@ public class Admin extends TechSupport implements UsersFactory {
     super(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);
   }
 
-  public User Factory(String userType, String firstName, String lastName, int id, String username, Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber) {
+  public User Factory(String userType, String firstName, String lastName, int id, String username, java.util.Date registrationDate, String phoneNumber, Gender gender, String email, int passportNumber) {
     switch (userType.toLowerCase()) {
       case "admin":
         return new Admin(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
@@ -24,7 +24,7 @@ public class Admin extends TechSupport implements UsersFactory {
       case "techSupport":
         return new TechSupport(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
       case "teacher":
-        return new Teacher(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
+        return new Teacher(firstName, lastName,id, username,  registrationDate, phoneNumber, gender, email, passportNumber);  
       case "manager":
         return new Manager(firstName, lastName,id, username, registrationDate, phoneNumber, gender, email, passportNumber);  
       case "librarian":
